@@ -1578,11 +1578,11 @@ int main()
 
 int main(int argc, char **argv)
 {
-  yylex();
+    yylex();
+    printf("MARKS = %d\nKEYS = %d\n", marks, keys);
 
 }
 int yywrap()
 {
-    printf("MARKS = %d\nKEYS = %d\n", marks, keys);
 	return 1;
 }

@@ -1,10 +1,18 @@
 @echo off
-set str=%1
-echo %str% | findstr /r "[a-zA-Z0-9]+\.l"
-@echo on
-if %errorlevel% == 0 (
-    flex %str%
-) else (
+set "str=%~1"
+if exist "%str%.l" (
+    echo on
     flex %str%.l
+) else (
+    echo on
+    echo [ERROR]: source file "%str%.l" not found
 )
-gcc lex.yy.c
+@echo off
+set Source=lex.yy.c
+if exist %Source% (
+    @echo on
+    gcc %Source%
+) else (
+    @echo on
+    echo [ERROR]: source file "lex.yy.c" not found
+)
